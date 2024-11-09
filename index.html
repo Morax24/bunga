@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://rerofya.github.io/resources/flower.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>rerofya</title>
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            background-color: #222222;
+        }
+
+        #birthday-text {
+            text-align: center;
+            color: #69eeff;
+            font-size: 24px;
+            font-weight: bold;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            opacity: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #ff69b4;
+            animation: typing 4s steps(30) 1s forwards, blink 0.75s step-end infinite, fadeInText 5s forwards;
+            animation-delay: 5s;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+            100% { border-color: #ff69b4; }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 15;
+            opacity: 0;
+            transition: opacity 1s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        button {
+            background-color: #00ff11;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            margin: 5px;
+            width: auto;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 20px;
+            border-radius: 10px;
+            z-index: 20;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .popup.visible {
+            display: block;
+        }
+
+        .ok-button {
+            background-color: #00ff11;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            margin-top: 10px;
+        }
+
+        /* Footer Watermark */
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            text-align: center;
+            z-index: 100;
+        }
+
+        /* Media Queries untuk responsivitas */
+        @media only screen and (max-width: 768px) {
+            #birthday-text {
+                font-size: 18px;
+                width: 90%;
+                margin: 0 auto;
+                top: 20%;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 12px 25px;
+                width: 80%;
+            }
+
+            .popup {
+                font-size: 18px;
+                padding: 15px;
+                max-width: 95%;
+            }
+
+            .button-container {
+                bottom: 20px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            #birthday-text {
+                font-size: 16px;
+                top: 30%;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px 20px;
+                width: 90%;
+            }
+
+            .popup {
+                font-size: 16px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="flower-container"></div>
+    <div id="birthday-text">
+        Apakah kamu merasa <br>
+        senang Hari ini?
+    </div>
+    
+    <script src="https://rerofya.github.io/resources/flower.js"></script>
+
+    <div class="button-container" id="button-container">
+        <button class="yes-button" id="yesButton" onclick="showPopup()">Ya</button>
+        <button class="no-button">Tidak</button>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        Kenapa pencet "Tidak"? Apakah kamu ada masalah dalam hidupmu?
+        Jangan dipendam emosi kamu, bicarakan dengan orang yang kamu percayai.
+        <br><br>
+        <button class="ok-button" onclick="closePopup()">Kembali</button>
+    </div>
+
+    <!-- Watermark (Footer) -->
+    <div class="footer">
+        &copy; 2024 rerofya | Hak Cipta
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const buttonContainer = document.getElementById('button-container');
+            setTimeout(() => {
+                buttonContainer.style.opacity = 1;
+            }, 10000);
+        });
+
+        function showPopup() {
+            const popup = document.getElementById("popup");
+            popup.classList.add("visible");
+        }
+
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            popup.classList.remove("visible");
+        }
+    </script>
+</body>
+</html>
